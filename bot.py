@@ -4,16 +4,11 @@ import pprint
 import discord
 from discord.ext import commands
 
-from spreadsheetHandler import GSpreadWrapper
-
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 SERVER = os.getenv('DISCORD_SERVER')
-
-wrapper = GSpreadWrapper('TestSheet', 'TestTab')
-wrapper.testmethod()
 
 def get_prefix(bot, message):
   """A callable Prefix for our bot. This could be edited to allow per server prefixes."""

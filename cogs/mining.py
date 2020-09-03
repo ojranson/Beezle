@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 
+from spreadsheetHandler import GSpreadWrapper
+
+wrapper = GSpreadWrapper('TestSheet', 'TestTab')
+
 class MiningCog(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
