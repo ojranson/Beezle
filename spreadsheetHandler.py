@@ -21,6 +21,10 @@ class GSpreadWrapper:
   def get_range(self, range):
     return self.workSheet.get(range)
 
+  def find(self, value, in_row=None, in_col=None):
+    cell = self.workSheet.find(value, in_row=in_row, in_column=in_col)
+    return cell.row, cell.col
+
   def update(self, value, row, col):
     self.workSheet.update_cell(row, col, value)
 

@@ -22,8 +22,8 @@ def get_prefix(bot, message):
   # If we are in a guild, we allow for the user to mention us or use any of the prefixes in our list.
   return commands.when_mentioned_or(*prefixes)(bot, message)
 
-initial_extensions = ['cogs.industrial',
-                      'cogs.mining']
+initial_extensions = ['industrial',
+                      'mining']
 
 bot = commands.Bot(command_prefix=get_prefix, description='A hard working bug')
 
