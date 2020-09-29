@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from spreadsheetHandler import GSpreadWrapper
+from src.cogs.utils.spreadsheetHandler import GSpreadWrapper
 
 wrapper = GSpreadWrapper('TestSheet', 'TestTab')
 

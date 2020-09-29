@@ -22,15 +22,25 @@ def get_prefix(bot, message):
   # If we are in a guild, we allow for the user to mention us or use any of the prefixes in our list.
   return commands.when_mentioned_or(*prefixes)(bot, message)
 
-initial_extensions = ['industrial',
-                      'mining']
-
 bot = commands.Bot(command_prefix=get_prefix, description='A hard working bug')
 
-# loading all extensions listed in [initial_extensions]
-if __name__ == '__main__':
-  for extension in initial_extensions:
-    bot.load_extension(extension)
+@bot.command()
+async def load(ctx, extension):
+  bot.load_extension(f'src.cogs.{extension}')
+
+@bot.command()
+async def unload(ctx, extension):
+  bot.unload_extension(f'src.cogs.{extension}')
+
+@bot.command()
+async def reload(ctx, extension):
+  bot.unload_extension(f'src.cogs.{extension}')
+  bot.load_extension(f'src.cogs.{extension}')
+  
+for filename in os.listdir('./src/cogs'):
+  if filename.endswith('.py'):
+    bot.load_extension(f'src.cogs.{filename[:-3]}')
+    
 
 @bot.event
 async def on_ready():
